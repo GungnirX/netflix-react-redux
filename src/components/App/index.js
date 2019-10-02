@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { getMovieData, remove, add } from '../../redux/action-creators';
 import '../../style/App.css';
 import logo from '../../Netflix_Logo.png';
+import Footer from '../Footer';
+import MovieList from '../MovieList';
 
 class App extends Component {
   componentDidMount() {
@@ -19,6 +21,7 @@ class App extends Component {
 
   render() {
     const { myList, recommendations, isLoading, error } = this.props.movieData;
+
     return (
       <div className="app">
         <img className="logo" src={logo} alt="NetFlix Logo" />
@@ -29,56 +32,21 @@ class App extends Component {
             <div className="error">{error.message}. Server is not running!</div>
           ) : (
             <div>
-              <div className="myList-container">
-                <h2>My List</h2>
-                <div className="myList">
-                  {myList.map((item, index) => {
-                    return (
-                      <div className="movie" key={item.id}>
-                        <img src={item.img} alt="Movie Poster" />
-                        <div>
-                          <button
-                            className="btn"
-                            onClick={() => this.handleRemoveClick(item.id)}>
-                            Remove
-                          </button>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
+              <MovieList
+                category="My List"
+                data={myList}
+                onClick={this.handleRemoveClick}
+                buttonText="Remove"
+              />
 
-              <div className="recommendations-container">
-                <h2>Recommendations</h2>
-                <div className="recommendations">
-                  {recommendations.map((item, index) => {
-                    return (
-                      <div className="movie" key={item.id}>
-                        <img src={item.img} alt="Movie Poster" />
-                        <div>
-                          <button
-                            className="btn"
-                            onClick={() => this.handleAddClick(item.id)}>
-                            Add
-                          </button>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
+              <MovieList
+                category="Recommendations"
+                data={recommendations}
+                onClick={this.handleAddClick}
+                buttonText="Add"
+              />
 
-              <div className="footer">
-                <span>Movies in My List:</span>
-                {myList.map((item, index) => {
-                  return (
-                    <div key={item.id} className="title">
-                      {item.title}
-                    </div>
-                  );
-                })}
-              </div>
+              <Footer myList={myList} />
             </div>
           ))}
       </div>
