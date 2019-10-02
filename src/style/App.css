@@ -1,0 +1,81 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+.logo {
+  width: 15%;
+}
+
+.myList-container {
+  margin: 5px 2%;
+}
+
+.recommendations-container {
+  margin: 5px 2%;
+}
+
+.myList {
+  display: flex;
+  text-align: center;
+}
+
+.recommendations {
+  display: flex;
+  text-align: center;
+}
+
+.btn {
+  visibility: hidden;
+  cursor: pointer;
+  border: none;
+  padding: 5px 10px;
+  margin-top: 5px;
+}
+
+.btn:hover {
+  background-color: rgb(229, 9, 20);
+  color: white;
+}
+
+.movie {
+  margin: 5px;
+  padding: 5px;
+  transition: transform .2s;
+}
+
+.movie:hover {
+  transform: scale(1.2); 
+}
+
+.movie:hover .btn{
+  visibility: visible;
+}
+
+.footer {
+  background-color: rgb(229, 9, 20);
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+span {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.title {
+  margin: 0 10px;
+}
